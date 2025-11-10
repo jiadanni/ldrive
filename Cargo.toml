@@ -1,0 +1,84 @@
+[package]
+name = "drivesync"
+version = "0.1.0"
+edition = "2021"
+authors = ["DriveSync Contributors"]
+description = "Free, open source Google Drive client for Linux with native GUI integration"
+license = "MIT OR GPL-3.0"
+repository = "https://github.com/jiadanni/ldrive"
+readme = "README.md"
+keywords = ["google-drive", "sync", "linux", "gui", "backup"]
+categories = ["filesystem", "gui"]
+
+[dependencies]
+# Async runtime
+tokio = { version = "1.35", features = ["full"] }
+async-trait = "0.1"
+
+# HTTP client and API
+reqwest = { version = "0.11", features = ["json", "rustls-tls"], default-features = false }
+google-drive3 = "5.0"
+oauth2 = "4.4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Database and storage
+rusqlite = { version = "0.30", features = ["bundled"] }
+keyring = "2.3"
+
+# File system monitoring
+notify = "6.1"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Configuration
+toml = "0.8"
+directories = "5.0"
+
+# Desktop notifications
+notify-rust = "4.10"
+
+# GUI dependencies (GTK4)
+gtk = { version = "0.8", package = "gtk4", features = ["v4_12"] }
+libadwaita = { version = "0.6", features = ["v1_4"] }
+glib = "0.19"
+gio = "0.19"
+
+# Error handling
+anyhow = "1.0"
+thiserror = "1.0"
+
+# Utilities
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1.6", features = ["v4", "serde"] }
+md5 = "0.7"
+
+[dev-dependencies]
+tempfile = "3.8"
+mockall = "0.12"
+tokio-test = "0.4"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
+opt-level = "z"
+
+[profile.dev]
+opt-level = 0
+debug = true
+
+[[bin]]
+name = "drivesync"
+path = "src/main.rs"
+
+[package.metadata.deb]
+maintainer = "DriveSync Contributors"
+section = "utils"
+priority = "optional"
+assets = [
+    ["target/release/drivesync", "usr/bin/", "755"],
+    ["README.md", "usr/share/doc/drivesync/", "644"],
+]

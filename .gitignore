@@ -1,0 +1,57 @@
+# Rust
+/target/
+Cargo.lock
+**/*.rs.bk
+*.pdb
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Build artifacts
+*.so
+*.dylib
+*.dll
+*.exe
+
+# Testing
+.hypothesis/
+*.profraw
+*.profdata
+
+# Config and credentials (never commit these!)
+config.toml
+*.secret
+*.key
+credentials/
+
+# Logs
+*.log
+
+# Flatpak build
+.flatpak-builder/
+build/
+repo/
+
+# AppImage
+*.AppImage
+*.AppDir/
+
+# Distribution
+dist/
+*.deb
+*.rpm
+*.tar.gz
+*.zip
+
+# Documentation
+/target/doc/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
