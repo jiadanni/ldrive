@@ -11,8 +11,8 @@ pub mod monitor;
 pub mod resolver;
 
 pub use engine::SyncEngine;
-pub use monitor::FileMonitor;
-pub use resolver::ConflictResolver;
+pub use monitor::{FileEvent, FileEventKind, FileMonitor};
+pub use resolver::{ConflictResolver, ResolutionAction};
 
 use thiserror::Error;
 
