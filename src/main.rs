@@ -2,6 +2,7 @@ use gtk::prelude::*;
 use gtk::{glib, Application};
 
 mod api;
+mod app;
 mod config;
 mod gui;
 mod storage;

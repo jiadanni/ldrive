@@ -42,11 +42,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Connection status notifications
   - Customizable notification urgency and timeout
 
+- **Bi-directional sync engine**:
+  - Real-time file system monitoring using inotify
+  - Periodic sync with Google Drive (30-second interval)
+  - Automatic conflict detection and resolution strategies (rename, overwrite, ask)
+  - MD5 checksum validation for file integrity
+  - SQLite database for persistent sync state
+  - Support for create, modify, delete, and rename operations
+  - Automatic credential refresh during sync
+  - Progress tracking with detailed operation status
+  - Event-driven architecture with callbacks
+
+- **Application coordinator**:
+  - Unified `Application` struct integrating all components
+  - Automatic event routing between sync engine and tray icon
+  - State synchronization (engine state → tray status)
+  - Sync event notifications (uploads, downloads, conflicts, errors)
+  - Tray menu actions connected to engine controls
+  - Progress updates propagated to UI
+  - Graceful shutdown and cleanup
+
+- **Sync engine features**:
+  - State management (stopped, running, paused)
+  - Manual sync trigger
+  - Progress information (total files, completed files, current operation)
+  - Event callbacks for state changes, progress, and sync events
+  - Error handling with detailed error messages
+  - Conflict tracking in database
+  - Sync history logging
+
 - **Example applications**:
   - `oauth_flow.rs` - Complete OAuth authentication example
   - `list_files.rs` - List Google Drive files
   - `upload_file.rs` - Upload files to Drive
   - `system_tray.rs` - System tray and notification demonstration
+  - `integrated_sync.rs` - Complete end-to-end integration with all components
 
 - **Documentation**:
   - Comprehensive API Setup Guide
@@ -61,6 +91,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Added `url` crate for URL parsing
   - Added `base64` crate for encoding
   - Added `ksni` crate for system tray support
+  - Added `hostname` crate for conflict resolution
+  - Added `dirs` crate for home directory detection
 
 ### Changed
 - Updated Cargo.toml with additional dependencies

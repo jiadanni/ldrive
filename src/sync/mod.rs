@@ -10,7 +10,7 @@ pub mod engine;
 pub mod monitor;
 pub mod resolver;
 
-pub use engine::SyncEngine;
+pub use engine::{EngineState, SyncEngine, SyncEvent, SyncProgress};
 pub use monitor::{FileEvent, FileEventKind, FileMonitor};
 pub use resolver::{ConflictResolver, ResolutionAction};
 
