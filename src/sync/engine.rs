@@ -260,12 +260,21 @@ impl SyncEngine {
         self.perform_sync().await
     }
 
+    /// Update sync interval (requires restart to take effect)
+    pub async fn set_sync_interval(&self, seconds: u64) {
+        let mut config = self.config.write().await;
+        config.sync.sync_interval_seconds = seconds;
+        tracing::info!("Sync interval updated to {} seconds (restart required)", seconds);
+    }
+
     /// Main sync loop - runs periodically
     fn spawn_sync_loop(&self) {
         let engine = self.clone_arc();
 
         tokio::spawn(async move {
-            let mut interval = time::interval(Duration::from_secs(30));
+            // Get sync interval from config
+            let interval_secs = engine.config.read().await.sync.sync_interval_seconds;
+            let mut interval = time::interval(Duration::from_secs(interval_secs));
 
             loop {
                 interval.tick().await;

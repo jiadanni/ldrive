@@ -70,6 +70,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Error handling with detailed error messages
   - Conflict tracking in database
   - Sync history logging
+  - **Configurable sync interval** (default 30 seconds, customizable via config)
+  - **Bandwidth limiting** with token bucket rate limiter (0 = unlimited)
+
+- **GTK4 Main Window**:
+  - Multi-view interface with stack-based navigation
+  - Real-time sync progress display with progress bar
+  - File list view with search and filtering
+  - Statistics dashboard (total files, local changes, remote changes, conflicts)
+  - Control buttons (pause/resume, sync now)
+  - Settings view with preference groups
+  - Automatic UI updates based on sync engine events
+
+- **Performance & Configuration**:
+  - Configurable periodic sync interval
+  - Bandwidth rate limiting for uploads and downloads
+  - Token bucket algorithm for smooth rate limiting
+  - Network configuration (concurrent uploads/downloads, bandwidth limit)
+  - Per-account sync settings
+
+- **Testing**:
+  - Comprehensive integration tests for database operations
+  - Conflict resolution tests
+  - Config management tests
+  - Concurrent database access tests
+  - Complete sync workflow tests
 
 - **Example applications**:
   - `oauth_flow.rs` - Complete OAuth authentication example
@@ -77,6 +102,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `upload_file.rs` - Upload files to Drive
   - `system_tray.rs` - System tray and notification demonstration
   - `integrated_sync.rs` - Complete end-to-end integration with all components
+  - `gui_app.rs` - Full GTK4 GUI application with main window and tray integration
 
 - **Documentation**:
   - Comprehensive API Setup Guide

@@ -32,6 +32,7 @@ pub struct SyncConfig {
     pub conflict_resolution: ConflictResolution,
     pub auto_sync: bool,
     pub sync_hidden_files: bool,
+    pub sync_interval_seconds: u64, // Periodic sync interval in seconds
 }
 
 #[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq)]
@@ -79,6 +80,7 @@ impl Default for SyncConfig {
             conflict_resolution: ConflictResolution::Rename,
             auto_sync: true,
             sync_hidden_files: false,
+            sync_interval_seconds: 30, // Default 30 seconds
         }
     }
 }

@@ -8,10 +8,12 @@
 
 pub mod engine;
 pub mod monitor;
+pub mod rate_limiter;
 pub mod resolver;
 
 pub use engine::{EngineState, SyncEngine, SyncEvent, SyncProgress};
 pub use monitor::{FileEvent, FileEventKind, FileMonitor};
+pub use rate_limiter::RateLimiter;
 pub use resolver::{ConflictResolver, ResolutionAction};
 
 use thiserror::Error;

@@ -8,8 +8,10 @@
 /// - File browser
 
 pub mod tray;
+pub mod window;
 
-pub use tray::{TrayIcon, SyncStatus, NotificationManager};
+pub use tray::{NotificationManager, SyncStatus, TrayIcon};
+pub use window::MainWindow;
 
 use gtk::prelude::*;
 use gtk::{Application, ApplicationWindow, Box, Button, HeaderBar, Label, Orientation};
