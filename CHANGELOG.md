@@ -26,14 +26,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Track changes with change tokens
   - Get storage quota and account information
 
+- **System tray integration**:
+  - StatusNotifierItem protocol support via ksni
+  - Dynamic status icons (idle, syncing, paused, error, offline)
+  - Context menu with quick actions (pause/resume, open folder, settings, quit)
+  - Tooltip with account and storage information
+  - Desktop notification manager
+  - Support for GNOME, KDE, XFCE, Cinnamon, MATE, and other DEs
+
+- **Desktop notifications**:
+  - Sync completion notifications
+  - Upload/download complete notifications
+  - Error and conflict notifications
+  - Storage quota warnings
+  - Connection status notifications
+  - Customizable notification urgency and timeout
+
 - **Example applications**:
   - `oauth_flow.rs` - Complete OAuth authentication example
   - `list_files.rs` - List Google Drive files
   - `upload_file.rs` - Upload files to Drive
+  - `system_tray.rs` - System tray and notification demonstration
 
 - **Documentation**:
   - Comprehensive API Setup Guide
   - Step-by-step Google Cloud Console instructions
+  - System Tray Integration Guide
+  - Desktop environment compatibility matrix
   - Security best practices
   - Troubleshooting guide
   - Updated README with quick start examples
@@ -41,6 +60,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Dependencies**:
   - Added `url` crate for URL parsing
   - Added `base64` crate for encoding
+  - Added `ksni` crate for system tray support
 
 ### Changed
 - Updated Cargo.toml with additional dependencies

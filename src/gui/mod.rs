@@ -7,6 +7,10 @@
 /// - Account management UI
 /// - File browser
 
+pub mod tray;
+
+pub use tray::{TrayIcon, SyncStatus, NotificationManager};
+
 use gtk::prelude::*;
 use gtk::{Application, ApplicationWindow, Box, Button, HeaderBar, Label, Orientation};
 
