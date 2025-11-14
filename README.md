@@ -42,6 +42,17 @@ Provide Linux desktop users with a reliable, native Google Drive sync client wit
 
 ## 🚀 Quick Start
 
+### Prerequisites
+
+Before using DriveSync, you need Google Drive API credentials. See [API Setup Guide](docs/API_SETUP.md) for detailed instructions.
+
+**Quick version**:
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project
+3. Enable Google Drive API
+4. Create OAuth 2.0 credentials (Desktop app)
+5. Copy your Client ID and Client Secret
+
 ### Installation
 
 #### From Flatpak (Recommended)
@@ -74,11 +85,47 @@ sudo cp target/release/drivesync /usr/local/bin/
 
 ### Setup
 
-1. Launch DriveSync from your application menu
-2. Click "Add Account" and sign in with your Google account
-3. Select which folders to sync
-4. Choose your local sync directory
-5. Start syncing!
+1. **Set up API credentials**:
+   ```bash
+   export GOOGLE_CLIENT_ID="your_client_id.apps.googleusercontent.com"
+   export GOOGLE_CLIENT_SECRET="your_client_secret"
+   ```
+
+2. **Authenticate**:
+   ```bash
+   cargo run --example oauth_flow -- "$GOOGLE_CLIENT_ID" "$GOOGLE_CLIENT_SECRET"
+   ```
+
+3. **Test the connection**:
+   ```bash
+   cargo run --example list_files -- "your_email@gmail.com" "$GOOGLE_CLIENT_ID" "$GOOGLE_CLIENT_SECRET"
+   ```
+
+4. **Launch DriveSync**:
+   ```bash
+   cargo run
+   ```
+
+### Examples
+
+DriveSync includes several examples to help you get started:
+
+#### OAuth Authentication
+```bash
+cargo run --example oauth_flow -- "$GOOGLE_CLIENT_ID" "$GOOGLE_CLIENT_SECRET"
+```
+
+#### List Files
+```bash
+cargo run --example list_files -- "your_email@gmail.com" "$GOOGLE_CLIENT_ID" "$GOOGLE_CLIENT_SECRET"
+```
+
+#### Upload File
+```bash
+cargo run --example upload_file -- "your_email@gmail.com" "$GOOGLE_CLIENT_ID" "$GOOGLE_CLIENT_SECRET" path/to/file.txt
+```
+
+See [API Setup Guide](docs/API_SETUP.md) for more details.
 
 ## 🏗️ Architecture
 
